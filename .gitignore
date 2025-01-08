@@ -33,3 +33,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Xournal ###
+/docs/.dsa.autosave.xopp
