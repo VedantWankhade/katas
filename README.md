@@ -1,2 +1,2 @@
-# katas
-Code challenges / puzzles / dsa / coding patterns etc.
+# DSA
+Data Structures and Algorithms implementation in Java
