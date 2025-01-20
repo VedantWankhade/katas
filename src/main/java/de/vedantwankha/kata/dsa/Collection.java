@@ -22,4 +22,7 @@ public interface Collection<E> extends Iterable<E> {
     void add(E e);
     void addAll(Collection<? extends E> c);
     void remove(E e);
+    E[] toArray();
+    E get(int i);
+    void set(int i, E e);
 }
