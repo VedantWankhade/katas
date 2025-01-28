@@ -61,6 +61,36 @@ class TestAdd {
         for (Number number : arr) System.out.println(number);
 
     }
+
+    @Test
+    @DisplayName("Test add all method")
+    void testAddAll() {
+        ArrayList<Number> arr = new ArrayList<>();
+        ArrayList<Number> arr1 = new ArrayList<>();
+        arr1.add(1);
+        arr1.add(2);
+        arr1.add(3);
+        arr1.add(4);
+        arr.addAll(arr1);
+        assertEquals(4, arr.size());
+        System.out.println(arr);
+    }
+
+    @Test
+    @DisplayName("Test add all method with already existing elements")
+    void testAddAllExisting() {
+        ArrayList<Number> arr = new ArrayList<>();
+        ArrayList<Number> arr1 = new ArrayList<>();
+        arr.add(22);
+        arr.add(99);
+        arr1.add(1);
+        arr1.add(2);
+        arr1.add(3);
+        arr1.add(4);
+        arr.addAll(arr1);
+        assertEquals(6, arr.size());
+        System.out.println(arr);
+    }
 }
 
 @DisplayName("Test empty method")
@@ -70,5 +100,22 @@ class TestEmpty {
     void testEmpty() {
         ArrayList<Number> arr = new ArrayList<>();
         assertTrue(arr.isEmpty());
+    }
+}
+
+@DisplayName("Test get method")
+class TestGet {
+    @Test
+    @DisplayName("Test get method")
+    void testGet() {
+        ArrayList<Number> arr1 = new ArrayList<>();
+        arr1.add(1);
+        arr1.add(2);
+        arr1.add(3);
+        arr1.add(4);
+        for (int i = 0; i < arr1.size(); i++) {
+            assertEquals(i + 1, arr1.get(i));
+            System.out.println(arr1.get(i));
+        }
     }
 }

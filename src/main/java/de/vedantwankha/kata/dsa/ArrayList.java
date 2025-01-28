@@ -1,5 +1,6 @@
 package de.vedantwankha.kata.dsa;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class ArrayList<E> implements Collection<E> {
@@ -53,18 +54,34 @@ public class ArrayList<E> implements Collection<E> {
         this.size++;
     }
 
-    private void resize() {
-        E[] newArr = (E[]) new Object[this.capacity * this.GROWTH_FACTOR];
+    private void resize(int capacity) {
+        E[] newArr = (E[]) new Object[capacity];
         for (int i = 0; i < this.size; i++) {
             newArr[i] = this.get(i);
         }
         this.items = newArr;
-        this.capacity *= this.GROWTH_FACTOR;
+        this.capacity = capacity;
     }
 
+    private void resize() {
+        resize(GROWTH_FACTOR * this.capacity);
+    }
+
+    /**
+     * extend here to save space and time
+     * @param c
+     */
     @Override
     public void addAll(Collection<? extends E> c) {
-
+        if (this.getCapacity() < this.size() + c.size()) {
+            resize(this.size + c.size());
+        }
+        System.out.println(c.size());
+        System.out.println(this.capacity);
+        for (int i = this.size, j = 0; i < this.capacity; i++, j++) {
+            this.set(i, c.get(j));
+            size++;
+        }
     }
 
     /**
@@ -102,9 +119,9 @@ public class ArrayList<E> implements Collection<E> {
 
     @Override
     public void set(int i, E e) {
-        if (i < this.size) {
+        if (i < this.capacity) {
             this.items[i] = e;
-        } else throw new ArrayIndexOutOfBoundsException("Given index " + i + " should be less than " + this.size);
+        } else throw new ArrayIndexOutOfBoundsException("Given index " + i + " should be less than " + this.capacity);
     }
 
     @Override
@@ -118,7 +135,9 @@ public class ArrayList<E> implements Collection<E> {
         out.append("[");
         var iter = this.iterator();
         while (iter.hasNext()) {
-            out.append(iter.next() + ", ");
+            out.append(iter.next());
+            if (iter.hasNext())
+                out.append(", ");
         }
         out.append("]");
         return out.toString();
