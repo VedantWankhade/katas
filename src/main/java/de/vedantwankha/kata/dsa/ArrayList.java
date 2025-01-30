@@ -2,7 +2,7 @@ package de.vedantwankha.kata.dsa;
 
 import java.util.Iterator;
 
-public class ArrayList<E> implements List<E>, ImmutableList<E> {
+public class ArrayList<E> extends AbstractCollection<E> implements List<E>, ImmutableList<E> {
     private final int GROWTH_FACTOR = 2;
 
     public int getCapacity() {
@@ -24,6 +24,7 @@ public class ArrayList<E> implements List<E>, ImmutableList<E> {
 
     public ArrayList(Collection<? extends E> col) {
         this.capacity = col.size();
+        this.items = (E[]) new Object[this.capacity];
         for (E e: col) {
             add(e);
         }
@@ -99,20 +100,6 @@ public class ArrayList<E> implements List<E>, ImmutableList<E> {
     @Override
     public Iterator<E> iterator() {
         return new ArrayListIterator();
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder out = new StringBuilder();
-        out.append("[");
-        var iter = this.iterator();
-        while (iter.hasNext()) {
-            out.append(iter.next());
-            if (iter.hasNext())
-                out.append(", ");
-        }
-        out.append("]");
-        return out.toString();
     }
 
     private class ArrayListIterator implements Iterator<E> {

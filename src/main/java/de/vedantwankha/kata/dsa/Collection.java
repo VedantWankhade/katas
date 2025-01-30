@@ -15,22 +15,6 @@ package de.vedantwankha.kata.dsa;
 public interface Collection<E> extends Iterable<E> {
     int size();
     boolean isEmpty();
-
-    default Object[] toArray() {
-//        E[] arr = (E[]) new Object[size()]; // this will throw ClassCastException somewhere else due to type erasure
-        Object[] arr = new Object[size()];
-        int i = 0;
-        var itr = iterator();
-        while (itr.hasNext()) {
-            arr[i++] = itr.next();
-        }
-        return arr;
-    }
-
-    default boolean contains(E item) {
-        for (E e: this) {
-            if (e.equals(item)) return true;
-        }
-        return false;
-    }
+    Object[] toArray();
+    boolean contains(E item);
 }
