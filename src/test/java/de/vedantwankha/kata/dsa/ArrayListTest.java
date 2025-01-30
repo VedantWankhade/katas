@@ -5,6 +5,21 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("Test contains method")
+class TestContains {
+    @Test
+    @DisplayName("Test contains")
+    void testContains() {
+        ArrayList<Number> arr1 = new ArrayList<>();
+        arr1.add(1);
+        arr1.add(2);
+        arr1.add(3);
+        arr1.add(4);
+        assertTrue(arr1.contains(2));
+        assertFalse(arr1.contains(99));
+    }
+}
+
 @DisplayName("Test size method")
 class TestSize {
     @Test
@@ -108,7 +123,7 @@ class TestGet {
     @Test
     @DisplayName("Test get method")
     void testGet() {
-        ArrayList<Number> arr1 = new ArrayList<>();
+        List<Number> arr1 = new ArrayList<>();
         arr1.add(1);
         arr1.add(2);
         arr1.add(3);
@@ -117,5 +132,60 @@ class TestGet {
             assertEquals(i + 1, arr1.get(i));
             System.out.println(arr1.get(i));
         }
+    }
+}
+
+@DisplayName("Test toArray")
+class TestToArray {
+    @Test
+    @DisplayName("Test toArray")
+    void testToArray() {
+        List<Integer> l = new ArrayList<Integer>();
+        l.add(1);
+        l.add(2);
+        l.add(3);
+        var expt = new Integer[3];
+        expt[0] = 1;
+        expt[1] = 2;
+        expt[2] = 3;
+        Object[] act = l.toArray();
+        for (int i = 0; i < expt.length; i++) {
+            assertEquals(expt[i], act[i]);
+            System.out.println(act[i]);
+        }
+    }
+}
+
+@DisplayName("Test abstraction")
+class TestAbstraction {
+    @Test
+    @DisplayName("Test List abstraction")
+    void testListAbstraction() {
+        var l = new ArrayList<Number>();
+        l.add(1);
+        l.add(2);
+        l.add(3);
+        List<Number> arr1 = new ArrayList<>(l);
+        for (int i = 0; i < arr1.size(); i++) {
+            assertEquals(i + 1, arr1.get(i));
+            System.out.println(arr1.get(i));
+        }
+         arr1.add(22);
+    }
+
+    @Test
+    @DisplayName("Test ImmutableList abstraction")
+    void testImmutableListAbstraction() {
+        var l = new ArrayList<Number>();
+        l.add(1);
+        l.add(2);
+        l.add(3);
+        ImmutableList<Number> arr1 = new ArrayList<>(l);
+        for (int i = 0; i < arr1.size(); i++) {
+            assertEquals(i + 1, arr1.get(i));
+            System.out.println(arr1.get(i));
+        }
+        // the following should throw compile error
+        // arr1.add(22);
     }
 }

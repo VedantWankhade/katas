@@ -1,9 +1,8 @@
 package de.vedantwankha.kata.dsa;
 
-import java.util.Arrays;
 import java.util.Iterator;
 
-public class ArrayList<E> implements Collection<E> {
+public class ArrayList<E> implements List<E>, ImmutableList<E> {
     private final int GROWTH_FACTOR = 2;
 
     public int getCapacity() {
@@ -25,10 +24,8 @@ public class ArrayList<E> implements Collection<E> {
 
     public ArrayList(Collection<? extends E> col) {
         this.capacity = col.size();
-        this.items = (E[]) new Object[this.capacity];
-        E[] colArr = col.toArray();
-        for (int i = 0; i < this.capacity; i++) {
-            this.add(colArr[i]);
+        for (E e: col) {
+            add(e);
         }
     }
 
@@ -43,15 +40,16 @@ public class ArrayList<E> implements Collection<E> {
     }
 
     @Override
-    public boolean contains(E e) {
-        return false;
-    }
-
-    @Override
     public void add(E e) {
         if (this.size == this.capacity) resize();
         this.items[this.size] = e;
         this.size++;
+    }
+
+    @Override
+    public void clear() {
+        this.size = 0;
+        this.items = (E[]) new Object[capacity];
     }
 
     private void resize(int capacity) {
@@ -65,23 +63,6 @@ public class ArrayList<E> implements Collection<E> {
 
     private void resize() {
         resize(GROWTH_FACTOR * this.capacity);
-    }
-
-    /**
-     * extend here to save space and time
-     * @param c
-     */
-    @Override
-    public void addAll(Collection<? extends E> c) {
-        if (this.getCapacity() < this.size() + c.size()) {
-            resize(this.size + c.size());
-        }
-        System.out.println(c.size());
-        System.out.println(this.capacity);
-        for (int i = this.size, j = 0; i < this.capacity; i++, j++) {
-            this.set(i, c.get(j));
-            size++;
-        }
     }
 
     /**
@@ -99,15 +80,6 @@ public class ArrayList<E> implements Collection<E> {
             }
         }
         this.size--;
-    }
-
-    @Override
-    public E[] toArray() {
-        E[] arr = (E[]) new Object[this.size];
-        for (int i = 0; i < this.size; i++) {
-            arr[i] = this.get(i);
-        }
-        return arr;
     }
 
     @Override
