@@ -42,9 +42,7 @@ public class ArrayList<E> extends AbstractCollection<E> implements List<E>, Immu
 
     @Override
     public void add(E e) {
-        if (this.size == this.capacity) resize();
-        this.items[this.size] = e;
-        this.size++;
+        addLast(e);
     }
 
     @Override
@@ -84,10 +82,45 @@ public class ArrayList<E> extends AbstractCollection<E> implements List<E>, Immu
     }
 
     @Override
+    public void remove(int idx) {
+        for (int i = idx + 1; i < size(); i++) {
+            set(i - 1, get(i));
+        }
+        size--;
+    }
+
+    @Override
     public E get(int i) {
         if (i < this.size)
             return this.items[i];
         return null;
+    }
+
+    @Override
+    public void add(E e, int idx) {
+        if (idx >= capacity) {
+            throw new ArrayIndexOutOfBoundsException("Given index " + idx + " should be less than capacity " + capacity);
+        }
+        if (size() + 1 >= getCapacity()) {
+            resize();
+        }
+        size++;
+        for (int i = size(); i >= idx; i--) {
+            set(i, get(i - 1));
+        }
+        set(idx, e);
+    }
+
+    @Override
+    public void addFirst(E e) {
+        // TODO))
+    }
+
+    @Override
+    public void addLast(E e) {
+        if (this.size == this.capacity) resize();
+        this.items[this.size] = e;
+        this.size++;
     }
 
     @Override
