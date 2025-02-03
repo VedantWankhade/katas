@@ -4,9 +4,39 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.EmptyStackException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TestLinkedList {
+    @Nested
+    @DisplayName("Test as a Stack")
+    class TestAsStack {
+        @Test
+        @DisplayName("Test stack abstraction")
+        void testStack() {
+            Stack<Integer> stack = new LinkedList<>();
+            stack.push(1);
+            stack.push(2);
+            stack.push(3);
+            stack.push(4);
+            System.out.println(stack);
+            assertEquals(4, stack.size());
+            assertEquals(4, stack.pop());
+            System.out.println(stack);
+            assertEquals(3, stack.size());
+            assertEquals(3, stack.pop());
+            System.out.println(stack);
+            assertEquals(2, stack.size());
+            assertEquals(2, stack.pop());
+            System.out.println(stack);
+            assertEquals(1, stack.size());
+            assertEquals(1, stack.pop());
+            System.out.println(stack);
+            assertThrows(EmptyStackException.class, stack::pop);
+        }
+    }
+
     @Nested
     @DisplayName("Test constructors")
     class TestConstructors {

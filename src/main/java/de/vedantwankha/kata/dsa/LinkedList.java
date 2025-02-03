@@ -1,8 +1,9 @@
 package de.vedantwankha.kata.dsa;
 
+import java.util.EmptyStackException;
 import java.util.Iterator;
 
-public class LinkedList<E> extends AbstractCollection<E> implements List<E>, ImmutableList<E> {
+public class LinkedList<E> extends AbstractCollection<E> implements List<E>, ImmutableList<E>, Stack<E> {
     private class Node {
         private E data;
         private Node next;
@@ -109,7 +110,20 @@ public class LinkedList<E> extends AbstractCollection<E> implements List<E>, Imm
 
     @Override
     public void remove(int idx) {
-        // TODO))
+        if (idx >= size()) throw new IndexOutOfBoundsException("Given index " + idx + " should be less than the size of list " + size());
+        if (idx == 0) {
+            head = head.next;
+            size--;
+            return;
+        }
+        var currentNode = head;
+        int i = 0;
+        while (currentNode.next != null && i < idx - 1) {
+            i++;
+            currentNode = currentNode.next;
+        }
+        currentNode.next = currentNode.next.next;
+        size--;
     }
 
     @Override
@@ -130,6 +144,19 @@ public class LinkedList<E> extends AbstractCollection<E> implements List<E>, Imm
     @Override
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    @Override
+    public E pop() {
+        if (size() == 0) throw new EmptyStackException();
+        E e = get(0);
+        remove(0);
+        return e;
+    }
+
+    @Override
+    public void push(E e) {
+        addFirst(e);
     }
 
     @Override

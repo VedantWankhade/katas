@@ -1,8 +1,9 @@
 package de.vedantwankha.kata.dsa;
 
+import java.util.EmptyStackException;
 import java.util.Iterator;
 
-public class ArrayList<E> extends AbstractCollection<E> implements List<E>, ImmutableList<E> {
+public class ArrayList<E> extends AbstractCollection<E> implements List<E>, ImmutableList<E>, Stack<E> {
     private final int GROWTH_FACTOR = 2;
 
     public int getCapacity() {
@@ -11,7 +12,6 @@ public class ArrayList<E> extends AbstractCollection<E> implements List<E>, Immu
 
     private int capacity, size;
     private E[] items;
-
 
     public ArrayList() {
         this(4);
@@ -133,6 +133,19 @@ public class ArrayList<E> extends AbstractCollection<E> implements List<E>, Immu
     @Override
     public Iterator<E> iterator() {
         return new ArrayListIterator();
+    }
+
+    @Override
+    public E pop() {
+        if (size() == 0) throw new EmptyStackException();
+        E e = get(size() - 1);
+        remove(size() - 1);
+        return e;
+    }
+
+    @Override
+    public void push(E e) {
+        add(e);
     }
 
     private class ArrayListIterator implements Iterator<E> {
