@@ -10,6 +10,47 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TestLinkedList {
     @Nested
+    @DisplayName("Test as queues")
+    class TestAsQueues {
+        @Test
+        @DisplayName("Test queue abstraction")
+        void testQueue() {
+            Queue<Integer> q = new LinkedList<>();
+            q.pushLast(1);
+            q.pushLast(2);
+            q.pushLast(3);
+            System.out.println(q);
+            assertEquals(3, q.size());
+            assertEquals(1, q.popFirst());
+            assertEquals(2, q.popFirst());
+            assertEquals(3, q.popFirst());
+            assertEquals(0, q.size());
+            assertThrows(EmptyStackException.class, q::popFirst);
+        }
+
+        @Test
+        @DisplayName("Test deque abstraction")
+        void testDeque() {
+            Deque<Integer> dq = new LinkedList<>();
+            dq.pushLast(1);
+            dq.pushLast(2);
+            dq.pushLast(3);
+            System.out.println(dq);
+            dq.pushFirst(99);
+            dq.pushFirst(88);
+            System.out.println(dq);
+            System.out.println(dq.size());
+            assertEquals(88, dq.popFirst());
+            System.out.println(dq.size());
+            assertEquals(99, dq.popFirst());
+            System.out.println(dq.size());
+            System.out.println(dq);
+            assertEquals(3, dq.popLast());
+            assertEquals(2, dq.popLast());
+        }
+    }
+
+    @Nested
     @DisplayName("Test as a Stack")
     class TestAsStack {
         @Test

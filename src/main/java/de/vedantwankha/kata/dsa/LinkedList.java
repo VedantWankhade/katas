@@ -3,7 +3,7 @@ package de.vedantwankha.kata.dsa;
 import java.util.EmptyStackException;
 import java.util.Iterator;
 
-public class LinkedList<E> extends AbstractCollection<E> implements List<E>, ImmutableList<E>, Stack<E> {
+public class LinkedList<E> extends AbstractCollection<E> implements List<E>, ImmutableList<E>, Stack<E>, Deque<E> {
     private class Node {
         private E data;
         private Node next;
@@ -39,6 +39,29 @@ public class LinkedList<E> extends AbstractCollection<E> implements List<E>, Imm
     }
 
     @Override
+    public E popLast() {
+        E e = get(size() - 1);
+        tail = tail.prev;
+        size--;
+        return e;
+    }
+
+    @Override
+    public void pushFirst(E e) {
+        push(e);
+    }
+
+    @Override
+    public void pushLast(E e) {
+        addLast(e);
+    }
+
+    @Override
+    public E popFirst() {
+        return pop();
+    }
+
+    @Override
     public void add(E e, int idx) {
         if (idx > size) {
             throw new IndexOutOfBoundsException("Index " + idx + " should be less than or equal to the size of list " + size);
@@ -57,7 +80,9 @@ public class LinkedList<E> extends AbstractCollection<E> implements List<E>, Imm
             currentNode = currentNode.next;
         }
         var newNode = new Node(e);
+        newNode.prev = currentNode.prev;
         newNode.next = currentNode.next;
+        currentNode.prev = newNode;
         currentNode.next = newNode;
         size++;
     }
@@ -70,6 +95,7 @@ public class LinkedList<E> extends AbstractCollection<E> implements List<E>, Imm
             tail = newNode;
         } else {
             newNode.next = head;
+            head.prev = newNode;
             head = newNode;
         }
         size++;
@@ -83,6 +109,7 @@ public class LinkedList<E> extends AbstractCollection<E> implements List<E>, Imm
             tail = node;
         } else {
             tail.next = node;
+            node.prev = tail;
             tail = node;
         }
         size++;
