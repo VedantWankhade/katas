@@ -2,6 +2,8 @@ package de.vedantwankha.kata.dsa;
 
 public interface List<E> extends MutableCollection<E> {
     E get(int i);
+    E getFirst();
+    E getLast();
     void add(E e, int i);
     void addFirst(E e);
     void addLast(E e);

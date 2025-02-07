@@ -136,6 +136,16 @@ public class LinkedList<E> extends AbstractCollection<E> implements List<E>, Imm
     }
 
     @Override
+    public E getFirst() {
+        return this.get(0);
+    }
+
+    @Override
+    public E getLast() {
+        return this.get(this.size - 1);
+    }
+
+    @Override
     public void remove(int idx) {
         if (idx >= size()) throw new IndexOutOfBoundsException("Given index " + idx + " should be less than the size of list " + size());
         if (idx == 0) {

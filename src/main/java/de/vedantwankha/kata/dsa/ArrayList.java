@@ -97,6 +97,16 @@ public class ArrayList<E> extends AbstractCollection<E> implements List<E>, Immu
     }
 
     @Override
+    public E getFirst() {
+        return this.get(0);
+    }
+
+    @Override
+    public E getLast() {
+        return this.get(this.size - 1);
+    }
+
+    @Override
     public void add(E e, int idx) {
         if (idx >= capacity) {
             throw new ArrayIndexOutOfBoundsException("Given index " + idx + " should be less than capacity " + capacity);
