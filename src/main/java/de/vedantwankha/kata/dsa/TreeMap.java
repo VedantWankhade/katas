@@ -104,8 +104,11 @@ public class TreeMap<K extends Comparable<K>, V> implements Map<K, V>, Iterable<
 
     @Override
     public Set<K> keySet() {
-        // TODO))
-        return null;
+        Set<K> set = new TreeSet<>();
+        for (Map.Entry<K, V> e: this.tree) {
+            set.add(e.getKey());
+        }
+        return set;
     }
 
     @Override
@@ -119,8 +122,11 @@ public class TreeMap<K extends Comparable<K>, V> implements Map<K, V>, Iterable<
 
     @Override
     public Set<Map.Entry<K, V>> entrySet() {
-        // TODO))
-        return null;
+        Set<Map.Entry<K, V>> set = new TreeSet<>();
+        for (Map.Entry<K, V> e: this.tree) {
+            set.add(e);
+        }
+        return set;
     }
 
 

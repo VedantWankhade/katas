@@ -48,4 +48,22 @@ public class TreeMapTest {
         System.out.println(m);
         assertFalse(m.containsKey(10));
     }
+
+    @Test
+    @DisplayName("Test keySet, getValues and entrySet methods")
+    void testKeysValuesEntries() {
+        Map<Integer, String> m = new TreeMap<>(TreeMap.BSTType.BST);
+        m.put(3, "Three");
+        m.put(5, "Five");
+        m.put(1, "One");
+        m.put(2, "Two");
+        m.put(10, "Ten");
+
+        Collection<String> vals = m.values();
+        System.out.println(vals);
+        Set<Integer> keys = m.keySet();
+        System.out.println(keys);
+        Set<Map.Entry<Integer, String>> entries = m.entrySet();
+        System.out.println(entries);
+    }
 }
