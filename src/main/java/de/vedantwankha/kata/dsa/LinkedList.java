@@ -4,10 +4,10 @@ import java.util.EmptyStackException;
 import java.util.Iterator;
 
 public class LinkedList<E> extends AbstractCollection<E> implements List<E>, ImmutableList<E>, Stack<E>, Deque<E> {
-    private class Node {
+    private static class Node<E> {
         private E data;
-        private Node next;
-        private Node prev;
+        private Node<E> next;
+        private Node<E> prev;
 
         Node(E e) {
             data = e;
@@ -16,8 +16,8 @@ public class LinkedList<E> extends AbstractCollection<E> implements List<E>, Imm
         }
     }
 
-    private Node head;
-    private Node tail;
+    private Node<E> head;
+    private Node<E> tail;
     private int size;
 
     public LinkedList() {
@@ -79,7 +79,7 @@ public class LinkedList<E> extends AbstractCollection<E> implements List<E>, Imm
             i++;
             currentNode = currentNode.next;
         }
-        var newNode = new Node(e);
+        var newNode = new Node<E>(e);
         newNode.prev = currentNode.prev;
         newNode.next = currentNode.next;
         currentNode.prev = newNode;
@@ -89,7 +89,7 @@ public class LinkedList<E> extends AbstractCollection<E> implements List<E>, Imm
 
     @Override
     public void addFirst(E e) {
-        var newNode = new Node(e);
+        var newNode = new Node<E>(e);
         if (head == null) {
             head = newNode;
             tail = newNode;
@@ -103,7 +103,7 @@ public class LinkedList<E> extends AbstractCollection<E> implements List<E>, Imm
 
     @Override
     public void addLast(E e) {
-        var node = new Node(e);
+        var node = new Node<E>(e);
         if (head == null) {
             head = node;
             tail = node;
@@ -165,7 +165,27 @@ public class LinkedList<E> extends AbstractCollection<E> implements List<E>, Imm
 
     @Override
     public void remove(E item) {
-        // TODO))
+        // remove first occurrence
+        if (head == null) throw new RuntimeException("Empty List");
+        if (head.data.equals(item)) {
+            head = head.next;
+        } else {
+            var current = head;
+            while (current.next != null) {
+                if (current.next.data.equals(item)) {
+                    var toRemove = current.next;
+                    current.next = toRemove.next;
+                    if (toRemove.next != null) {
+                        toRemove.next.prev = current;
+                    } else {
+                        tail = current;
+                    }
+                    size--;
+                    break;
+                }
+                current = current.next;
+            }
+        }
     }
 
     @Override
@@ -203,7 +223,7 @@ public class LinkedList<E> extends AbstractCollection<E> implements List<E>, Imm
 
     private class LinkedListIterator implements Iterator<E> {
 
-        private Node currentNode = head;
+        private Node<E> currentNode = head;
         private int cursor = 0;
 
         @Override

@@ -1,6 +1,6 @@
 package de.vedantwankha.kata.dsa;
 
-public interface Map<K extends Comparable<K>, V> {
+public interface Map<K extends Comparable<K>, V> extends Iterable<Map.Entry<K, V>> {
     interface Entry<K extends Comparable<K>, V> extends Comparable<Entry<K, V>> {
         K getKey();
         V getValue();

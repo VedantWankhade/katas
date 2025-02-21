@@ -190,4 +190,25 @@ class TestLinkedList {
             System.out.println(i);
         }
     }
+
+    @Test
+    @DisplayName("Test remove method")
+    void testGetAtIndex() {
+        List<String> ll = new LinkedList<>();
+        ll.add("1");
+        ll.add("2");
+        ll.add("3");
+        ll.add("4");
+        ll.add("5");
+        assertTrue(ll.contains("4"));
+        for (int i = 0; i < ll.size(); i++) {
+            System.out.println(ll.get(i));
+        }
+        ll.remove("4");
+        for (int i = 0; i < ll.size(); i++) {
+            System.out.println(ll.get(i));
+        }
+        System.out.println(ll);
+        assertFalse(ll.contains("4"));
+    }
 }
