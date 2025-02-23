@@ -49,6 +49,19 @@ public class HashSet<E extends Comparable<E>> implements Set<E> {
     }
 
     @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        var iter = iterator();
+        sb.append("[");
+        while (iter.hasNext()) {
+            sb.append(iter.next());
+            sb.append(iter.hasNext() ? ", " : "");
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
+    @Override
     public Iterator<E> iterator() {
         return new HashSetIterator();
     }

@@ -159,6 +159,7 @@ public class LinkedList<E> extends AbstractCollection<E> implements List<E>, Imm
             i++;
             currentNode = currentNode.next;
         }
+        assert currentNode.next != null;
         currentNode.next = currentNode.next.next;
         size--;
     }
@@ -228,7 +229,7 @@ public class LinkedList<E> extends AbstractCollection<E> implements List<E>, Imm
 
         @Override
         public boolean hasNext() {
-            if (cursor >= size)
+            if (currentNode == null)
                 return false;
             return true;
         }

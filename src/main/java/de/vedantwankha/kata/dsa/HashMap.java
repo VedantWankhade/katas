@@ -34,6 +34,11 @@ public class HashMap<K extends Comparable<K>, V> implements Map<K, V> {
         }
 
         @Override
+        public boolean equals(Object o) {
+            return compareTo((Entry<K, V>) o) == 0;
+        }
+
+        @Override
         public String toString() {
             return "Entry{" +
                     "key=" + key +
@@ -186,6 +191,11 @@ public class HashMap<K extends Comparable<K>, V> implements Map<K, V> {
             sb.append("\n");
         }
         return sb.toString();
+    }
+
+    @Override
+    public String toString() {
+        return toStringChain();
     }
 
     @Override
