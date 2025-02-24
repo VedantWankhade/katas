@@ -4,8 +4,8 @@ import java.util.Iterator;
 
 public class UnweightedGraph<V extends Comparable<V>> implements Graph<V>, Iterable<Map.Entry<V, List<Graph.Edge<V>>>> {
     public static class UnweightedEdge<V extends Comparable<V>> implements Edge<V> {
-        private final V src;
-        private final V dest;
+        protected final V src;
+        protected final V dest;
 
         public UnweightedEdge(V src, V dest) {
             this.src = src;
@@ -39,7 +39,7 @@ public class UnweightedGraph<V extends Comparable<V>> implements Graph<V>, Itera
         }
     }
 
-    private Map<V, List<Edge<V>>> adjList;
+    protected Map<V, List<Edge<V>>> adjList;
     private int size;
 
     public UnweightedGraph(int initialCapacity) {
