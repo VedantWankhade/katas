@@ -37,17 +37,10 @@ public interface Graph<V extends Comparable<V>> extends Iterable<Map.Entry<V, Li
     /** Remove a vertex v from the graph */
     boolean removeVertex(V v);
 
-
     /** Remove an edge (u, v) from the graph */
     boolean removeEdge(V u, V v);
 
-//    /** Obtain a depth-first search tree */
-//    UnweightedGraph<V>.SearchTree dfs(V v);
-//
-//    /** Obtain a breadth-first search tree */
-//    UnweightedGraph<V>.SearchTree bfs(V v);
-
-    public interface Edge<V> {
+    interface Edge<V> {
         V src();
         V dest();
     }
