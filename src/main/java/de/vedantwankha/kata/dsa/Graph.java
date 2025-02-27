@@ -1,6 +1,6 @@
 package de.vedantwankha.kata.dsa;
 
-public interface Graph<V extends Comparable<V>> extends Iterable<Map.Entry<V, List<Graph.Edge<V>>>> {
+public interface Graph<V extends Comparable<V>> extends Iterable<V> {
     /** Returns the number of vertices */
     int size();
 

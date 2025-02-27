@@ -14,6 +14,6 @@ public interface Map<K extends Comparable<K>, V> extends Iterable<Map.Entry<K, V
     void put(K key, V val);
     V remove(K key);
     Set<K> keySet();
-    Collection<V> values();
+    List<V> values();
     Set<Entry<K, V>> entrySet();
 }

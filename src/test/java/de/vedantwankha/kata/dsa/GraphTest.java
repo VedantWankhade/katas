@@ -5,6 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.Iterator;
+
 public class GraphTest {
     @Nested
     @DisplayName("Test unweighted graphs")
@@ -70,6 +72,15 @@ public class GraphTest {
             g.removeVertex("Seattle");
             System.out.println(g.vertices());
             System.out.println(g);
+        }
+
+        @Test
+        @DisplayName("Test breadth first traversal")
+        void testBreadthFirstIterator() {
+            Iterator<String> it = ((UnweightedGraph) g).iterator("Seattle");
+            while (it.hasNext()) {
+                System.out.println(it.next());
+            }
         }
     }
 

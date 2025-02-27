@@ -1,6 +1,6 @@
 package de.vedantwankha.kata.dsa;
 
-public class WeightedGraph<V extends Comparable<V>> extends UnweightedGraph<V> implements Graph<V>, Iterable<Map.Entry<V, List<Graph.Edge<V>>>> {
+public class WeightedGraph<V extends Comparable<V>> extends UnweightedGraph<V> implements Graph<V>, Iterable<V> {
     public static class WeightedEdge<V extends Comparable<V>> extends UnweightedEdge<V> {
         private double weight;
         public WeightedEdge(V src, V dest, double w) {

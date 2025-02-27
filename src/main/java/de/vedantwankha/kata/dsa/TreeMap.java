@@ -112,7 +112,7 @@ public class TreeMap<K extends Comparable<K>, V> implements Map<K, V>, Iterable<
     }
 
     @Override
-    public Collection<V> values() {
+    public List<V> values() {
         ArrayList<V> list = new ArrayList<>();
         for (Map.Entry<K, V> e: this.tree) {
             list.add(e.getValue());

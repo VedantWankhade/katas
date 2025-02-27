@@ -153,7 +153,7 @@ public class HashMap<K extends Comparable<K>, V> implements Map<K, V> {
     }
 
     @Override
-    public Collection<V> values() {
+    public List<V> values() {
         ArrayList<V> vals = new ArrayList<>(size);
         for (var bucket: table) {
             if (bucket != null) {

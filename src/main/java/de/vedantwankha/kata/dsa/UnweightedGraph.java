@@ -2,7 +2,7 @@ package de.vedantwankha.kata.dsa;
 
 import java.util.Iterator;
 
-public class UnweightedGraph<V extends Comparable<V>> implements Graph<V>, Iterable<Map.Entry<V, List<Graph.Edge<V>>>> {
+public class UnweightedGraph<V extends Comparable<V>> implements Graph<V>, Iterable<V> {
     public static class UnweightedEdge<V extends Comparable<V>> implements Edge<V> {
         protected final V src;
         protected final V dest;
@@ -130,9 +130,18 @@ public class UnweightedGraph<V extends Comparable<V>> implements Graph<V>, Itera
         return true;
     }
 
+//    @Override
+//    public Iterator<Map.Entry<V, List<Edge<V>>>> iterator() {
+//        return adjList.iterator();
+//    }
+
     @Override
-    public Iterator<Map.Entry<V, List<Edge<V>>>> iterator() {
-        return adjList.iterator();
+    public Iterator<V> iterator() {
+        return new BreadthFirstIterator(adjList.values().get(0).getFirst().src());
+    }
+
+    public Iterator<V> iterator(V v) {
+        return new BreadthFirstIterator(v);
     }
 
     @Override
@@ -140,13 +149,31 @@ public class UnweightedGraph<V extends Comparable<V>> implements Graph<V>, Itera
         return adjList.toString();
     }
 
-//    @Override
-//    public UnweightedGraph<V>.SearchTree dfs(V v) {
-//        return null;
-//    }
-//
-//    @Override
-//    public UnweightedGraph<V>.SearchTree bfs(V v) {
-//        return null;
-//    }
+    public class BreadthFirstIterator implements Iterator<V> {
+        private Queue<V> q = new LinkedList<V>();
+        Set<V> visited = new HashSet<>();
+
+        public BreadthFirstIterator(V v) {
+            q.pushLast(v);
+        }
+
+        @Override
+        public boolean hasNext() {
+            return !q.isEmpty();
+        }
+
+        @Override
+        public V next() {
+            V v = q.popFirst();
+            if (!visited.contains(v))
+                visited.add(v);
+            Set<V> neighbors = getNeighbors(v);
+            for (var n: neighbors) {
+                if (!visited.contains(n) && !q.contains(n)) {
+                    q.pushLast(n);
+                }
+            }
+            return v;
+        }
+    }
 }
