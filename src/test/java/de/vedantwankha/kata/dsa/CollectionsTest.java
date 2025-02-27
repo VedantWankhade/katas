@@ -43,4 +43,34 @@ public class CollectionsTest {
 
         System.out.println(Collections.selectionSort(l));
     }
+
+    @Test
+    @DisplayName("Test merge sort")
+    void testMergeSort() {
+        List<Integer> l = new ArrayList<>();
+        l.add(5);
+        l.add(2);
+        l.add(1);
+        l.add(7);
+        l.add(5);
+        l.add(8);
+        l.add(3);
+
+        System.out.println(Collections.mergeSort(l));
+    }
+
+    @Test
+    @DisplayName("Test quick sort")
+    void testQuickSort() {
+        List<Integer> l = new ArrayList<>();
+        l.add(5);
+        l.add(2);
+        l.add(1);
+        l.add(7);
+        l.add(5);
+        l.add(8);
+        l.add(3);
+
+        System.out.println(Collections.quickSort(l));
+    }
 }
