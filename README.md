@@ -1,2 +1,2 @@
-# DSA
-Data Structures and Algorithms implementation in Java
+# Coursera UCSD DSA Specialization
+Solutions to assignments from Coursera UCSD DSA Specialization
