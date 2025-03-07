@@ -130,10 +130,26 @@ public class UnweightedGraph<V extends Comparable<V>> implements Graph<V>, Itera
         return true;
     }
 
-//    @Override
-//    public Iterator<Map.Entry<V, List<Edge<V>>>> iterator() {
-//        return adjList.iterator();
-//    }
+    public boolean containsVertex(V v) {
+        return adjList.containsKey(v);
+    }
+
+    @Override
+    public List<V> path(V src, V dest) {
+        if (!containsVertex(src)) throw new RuntimeException("Vertex " + src + " does not exist in the graph.");
+        if (!containsVertex(dest)) throw new RuntimeException("Vertex " + dest + " does not exist in the graph.");
+        List<V> path = new ArrayList<>();
+        var iter = iterator(src);
+        while (iter.hasNext()) {
+            var v = iter.next();
+            if (v.compareTo(dest) == 0) {
+                path.add(v);
+                return path;
+            }
+            path.add(v);
+        }
+        return null;
+    }
 
     @Override
     public Iterator<V> iterator() {
@@ -142,6 +158,15 @@ public class UnweightedGraph<V extends Comparable<V>> implements Graph<V>, Itera
 
     public Iterator<V> iterator(V v) {
         return new BreadthFirstIterator(v);
+    }
+
+    public Iterator<V> dfsIterator() {
+        return new DepthFirstIterator(adjList.values().get(0).getFirst().src());
+    }
+
+
+    public Iterator<V> dfsIterator(V v) {
+        return new DepthFirstIterator(v);
     }
 
     @Override
@@ -171,6 +196,34 @@ public class UnweightedGraph<V extends Comparable<V>> implements Graph<V>, Itera
             for (var n: neighbors) {
                 if (!visited.contains(n) && !q.contains(n)) {
                     q.pushLast(n);
+                }
+            }
+            return v;
+        }
+    }
+
+    public class DepthFirstIterator implements Iterator<V> {
+        private Stack<V> q = new LinkedList<V>();
+        Set<V> visited = new HashSet<>();
+
+        public DepthFirstIterator(V v) {
+            q.push(v);
+        }
+
+        @Override
+        public boolean hasNext() {
+            return !q.isEmpty();
+        }
+
+        @Override
+        public V next() {
+            V v = q.pop();
+            if (!visited.contains(v))
+                visited.add(v);
+            Set<V> neighbors = getNeighbors(v);
+            for (var n: neighbors) {
+                if (!visited.contains(n) && !q.contains(n)) {
+                    q.push(n);
                 }
             }
             return v;

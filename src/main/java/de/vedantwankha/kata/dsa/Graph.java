@@ -40,6 +40,9 @@ public interface Graph<V extends Comparable<V>> extends Iterable<V> {
     /** Remove an edge (u, v) from the graph */
     boolean removeEdge(V u, V v);
 
+    /** Find the shortest path from src to dest vertex */
+    List<V> path(V src, V dest);
+
     interface Edge<V> {
         V src();
         V dest();

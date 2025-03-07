@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.util.Iterator;
 
 public class GraphTest {
@@ -28,7 +29,7 @@ public class GraphTest {
                 {10, 2}, {10, 4}, {10, 8}, {10, 11},
                 {11, 8}, {11, 9}, {11, 10}
         };
-        Graph<String> g = new UnweightedGraph<>();
+        UnweightedGraph<String> g = new UnweightedGraph<>();
 
         @BeforeEach
         void init() {
@@ -55,6 +56,16 @@ public class GraphTest {
         }
 
         @Test
+        @DisplayName("Test bfs path")
+        void testBfsPath() {
+            System.out.println(g.path("Seattle", "Seattle"));
+            System.out.println(g.path("Seattle", "San Francisco"));
+            System.out.println(g.path("Seattle", "Denver"));
+            System.out.println(g.path("Seattle", "Boston"));
+            System.out.println(g.path("Seattle", "Chicago"));
+        }
+
+        @Test
         @DisplayName("Test remove edge")
         void testRemoveEdge() {
             System.out.println(g.getNeighbors("Seattle"));
@@ -78,6 +89,15 @@ public class GraphTest {
         @DisplayName("Test breadth first traversal")
         void testBreadthFirstIterator() {
             Iterator<String> it = ((UnweightedGraph) g).iterator("Seattle");
+            while (it.hasNext()) {
+                System.out.println(it.next());
+            }
+        }
+
+        @Test
+        @DisplayName("Test depth first traversal")
+        void testDepthFirstIterator() {
+            Iterator<String> it = ((UnweightedGraph) g).dfsIterator("Seattle");
             while (it.hasNext()) {
                 System.out.println(it.next());
             }

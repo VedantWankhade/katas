@@ -26,4 +26,11 @@ public class WeightedGraph<V extends Comparable<V>> extends UnweightedGraph<V> i
     public boolean addEdge(V u, V v, double w) {
         return addEdge(new WeightedEdge<>(u, v, w));
     }
+
+    /** Dijkstra shortest path */
+    @Override
+    public List<V> path(V src, V dest) {
+        // TODO))
+        return null;
+    }
 }
