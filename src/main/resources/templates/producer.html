@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Producer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="|Send message to topic ${topic}|" />
+<form th:action="|producer?topic=${topic}|" method="post">
+    <label for="message">Message</label>
+    <input type="text" id="message" name="message" />
+</form>
+
+</body>
+</html>

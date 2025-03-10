@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Producer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+</head>
+<body>
+<p th:text="|Messages from topic ${topic}|" />
+<p>Messages</p>
+<ul id="messages">
+
+</ul>
+    <button id="connect">Connect</button>
+    <button id="disconnect">Disconnect</button>
+<ol></ol>
+<script src="/app.js"></script>
+</body>
+</html>
