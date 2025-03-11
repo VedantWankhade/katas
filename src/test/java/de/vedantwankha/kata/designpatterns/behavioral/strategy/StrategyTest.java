@@ -3,10 +3,8 @@ package de.vedantwankha.kata.designpatterns.behavioral.strategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @DisplayName("Test strategy pattern")
-class MapTest {
+class StrategyTest {
     @Test
     @DisplayName("Provide implementation of Router while creating map object")
     void testStrategy1() {
