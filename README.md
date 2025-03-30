@@ -1,2 +1,2 @@
-# Grind75
-My solutions to [grind75](https://www.techinterviewhandbook.org/grind75/)
+# Leetcode
+Uncategorized leetcode problems.
