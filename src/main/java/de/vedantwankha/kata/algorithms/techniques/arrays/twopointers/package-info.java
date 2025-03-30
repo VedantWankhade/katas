@@ -9,4 +9,4 @@
  * <li>Works better when the array is sorted or has some specific order that can determine how to move the pointer (eg. binary search, two sum etc)</li>
  * </ul>
  */
-package de.vedantwankha.kata.cp.techniques.arrays.twopointers;
+package de.vedantwankha.kata.algorithms.techniques.arrays.twopointers;

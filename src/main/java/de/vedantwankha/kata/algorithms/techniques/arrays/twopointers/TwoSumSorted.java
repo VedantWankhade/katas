@@ -1,4 +1,4 @@
-package de.vedantwankha.kata.cp.techniques.arrays.twopointers;
+package de.vedantwankha.kata.algorithms.techniques.arrays.twopointers;
 
 /**
  * <p>https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/?envType=problem-list-v2&envId=two-pointers</p>

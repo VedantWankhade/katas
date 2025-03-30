@@ -14,4 +14,4 @@
  * 	</ul>
  * </ul>
  */
-package de.vedantwankha.kata.cp.techniques.arrays.slidingwindow;
+package de.vedantwankha.kata.algorithms.techniques.arrays.slidingwindow;

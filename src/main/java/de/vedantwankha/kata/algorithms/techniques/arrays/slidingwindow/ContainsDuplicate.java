@@ -1,4 +1,4 @@
-package de.vedantwankha.kata.cp.techniques.arrays.slidingwindow;
+package de.vedantwankha.kata.algorithms.techniques.arrays.slidingwindow;
 
 import java.util.HashSet;
 import java.util.Set;

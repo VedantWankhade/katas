@@ -1,8 +1,6 @@
-package de.vedantwankha.kata.cp.techniques.arrays.slidingwindow;
+package de.vedantwankha.kata.algorithms.techniques.arrays.slidingwindow;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class MinimumSizeSubarraySumTest {
 

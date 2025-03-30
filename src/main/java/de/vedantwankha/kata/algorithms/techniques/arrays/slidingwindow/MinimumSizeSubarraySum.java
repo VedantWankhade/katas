@@ -1,4 +1,4 @@
-package de.vedantwankha.kata.cp.techniques.arrays.slidingwindow;
+package de.vedantwankha.kata.algorithms.techniques.arrays.slidingwindow;
 
 /**
  * <p>https://leetcode.com/problems/minimum-size-subarray-sum/description/</p>
