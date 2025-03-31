@@ -1,5 +1,7 @@
 package de.vedantwankha.kata.leetcode;
 
+import java.util.Arrays;
+
 /**
  * <h1>Sort Colors</h1>
  * <p><a href="https://leetcode.com/problems/sort-colors/description/">https://leetcode.com/problems/sort-colors/description/</a></p>
@@ -36,8 +38,24 @@ package de.vedantwankha.kata.leetcode;
  */
 public class SortColors {
     public static void sortColors(int[] nums) {
-        if (nums.length == 0) return;
+        if (nums.length == 1) return;
 
+        var map = new int[3];
+        for (var num: nums) {
+            map[num]++;
+        }
+        System.out.println(Arrays.toString(map));
 
+        int i = 0, j = 0;
+        while (i < nums.length) {
+            if (map[j] == 0) {
+                j++;
+            } else {
+                map[j]--;
+                nums[i] = j;
+                i++;
+            }
+        }
     }
 }
+/.,
