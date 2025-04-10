@@ -1,4 +1,4 @@
-package de.vedantwankha.kata.linkedin.algorithmicthinking;
+package de.vedantwankha.kata.linkedin.algorithmicthinking.warmup;
 
 /**
  * <h1>Game of two players</h1>

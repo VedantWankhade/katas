@@ -1,6 +1,4 @@
-package de.vedantwankha.kata.linkedin.algorithmicthinking;
-
-import java.util.Arrays;
+package de.vedantwankha.kata.linkedin.algorithmicthinking.warmup;
 
 /**
  * <h1>100 Doors</h1>

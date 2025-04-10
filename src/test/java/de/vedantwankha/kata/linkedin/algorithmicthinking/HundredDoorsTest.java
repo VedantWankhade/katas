@@ -1,8 +1,8 @@
 package de.vedantwankha.kata.linkedin.algorithmicthinking;
 
+import de.vedantwankha.kata.linkedin.algorithmicthinking.warmup.HundredDoors;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 class HundredDoorsTest {
 
     @Test
