@@ -1,2 +1,2 @@
-# Coursera UCSD DSA Specialization
-Solutions to assignments from Coursera UCSD DSA Specialization
+# LinkedIn Algorithmic Thinking
+Solutions to assignments from Algorithmic Thinking course (both)
