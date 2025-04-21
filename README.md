@@ -1,2 +1,2 @@
-# LinkedIn Algorithmic Thinking
-Solutions to assignments from Algorithmic Thinking course (both)
+# LinkedIn JDBC
+JDBC exercise from the linkedin course.
