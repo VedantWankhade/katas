@@ -1,0 +1,19 @@
+{
+  "name": "linkedin-javascript",
+  "version": "1.0.0",
+  "description": "Exercises from LinkedIn JavaScript courses",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VedantWankhade/katas.git"
+  },
+  "author": "Vedant Wankhade",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VedantWankhade/katas/issues"
+  },
+  "homepage": "https://github.com/VedantWankhade/katas#readme"
+}
