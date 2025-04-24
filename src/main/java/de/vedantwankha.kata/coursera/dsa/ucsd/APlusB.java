@@ -1,4 +1,4 @@
-package de.vedantwankha.coursera.dsa.ucsd;
+package de.vedantwankha.kata.coursera.dsa.ucsd;
 
 import java.util.Scanner;
 
