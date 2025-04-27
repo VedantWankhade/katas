@@ -46,3 +46,6 @@ console.log("c", c);
 c.b = true;
 console.log("a", a)
 console.log("c", c);
+
+console.log("func source coode");
+console.log("hello".toUpperCase.toString())

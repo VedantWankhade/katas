@@ -20,3 +20,11 @@ console.log(arr[1]);
 // methods
 console.log(arr.find(e => typeof e == 'number'))
 console.log(arr.find(e => e == 'wednesday'))
+
+
+
+// empty arrays are truthy
+let a = []
+if (a) console.log("YO BRO")
+
+if (a.length > 0) console.log("YO BRO 22222")
