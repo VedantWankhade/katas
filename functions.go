@@ -13,11 +13,25 @@ func functions() {
 	// fmt.Println(add(nums2...)) // wont work cause nums2 is not a slice
 	fmt.Println(add(nums2[:]...)) // do this instead
 
-	twoAdder := xAddGenerator(2)
-	fourAdder := xAddGenerator(4)
+	sequenceOf2Adder := sequenceOfXAdder(2)
+	sequenceOf3Adder := sequenceOfXAdder(3)
 
-	fmt.Println(twoAdder(5))
-	fmt.Println(fourAdder(5))
+	fmt.Printf("%s\t%s\n", "Sequence of 2", "Sequence of 3")
+	for range 5 {
+		fmt.Printf("%d\t%d\n", sequenceOf2Adder(), sequenceOf3Adder())
+	}
+
+	fmt.Println(fib(6))
+}
+
+func sequenceOfXAdder(x int) func() int {
+	y := 0
+	inc := x
+	return func() int {
+		y = y + x
+		x = x + inc
+		return y
+	}
 }
 
 func addAndSubtract(num1, num2 int) (int, int) {
@@ -32,8 +46,10 @@ func add(nums ...int) int {
 	return sum
 }
 
-func xAddGenerator(x int) func(int) int {
-	return func(i int) int {
-		return i + x
+func fib(n int) int {
+	if n > 1 {
+		return fib(n-2) + fib(n-1)
+	} else {
+		return n
 	}
 }
