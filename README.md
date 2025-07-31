@@ -1,2 +1,2 @@
 # katas
-Code challenges / puzzles / dsa / coding patterns etc.
+The C Programming Language
