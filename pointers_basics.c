@@ -3,6 +3,7 @@
 int main() {
     
     char c = 'A';
-    printf("%s\n", &c);
+    char *p = &c;
+    printf("%x points to %c\n", p, *p);
     return 0;
 }
