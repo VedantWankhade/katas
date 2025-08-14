@@ -1,2 +1,3 @@
-# katas
-Code challenges / puzzles / dsa / coding patterns etc.
+# Computer Networking A Top Down Approach
+Exercises and projects from the book Computer Networking - A Top Down Approach
+
