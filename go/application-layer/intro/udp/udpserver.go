@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"strings"
 )
 
 func udpServer() {
@@ -13,6 +14,17 @@ func udpServer() {
 	}
 	defer conn.Close()
 	var msg []byte = make([]byte, 1024)
-	_, _, err = conn.ReadFrom(msg)
-	fmt.Println(string(msg))
+	_, retAddr, err := conn.ReadFrom(msg)
+	msgString := string(msg)
+	fmt.Println(msgString)
+	fmt.Println("got from", retAddr.String())
+
+	retConn, err := net.Dial(retAddr.Network(), retAddr.String())
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer retConn.Close()
+	ret := []byte(strings.ToUpper(msgString))
+	retConn.Write(ret)
 }
