@@ -1,2 +1,2 @@
-# katas
-Code challenges / puzzles / dsa / coding patterns etc.
+# Tech Interview Handbook
+[Tech Interview Handbook Cheatsheet](https://www.techinterviewhandbook.org/algorithms/study-cheatsheet/)
