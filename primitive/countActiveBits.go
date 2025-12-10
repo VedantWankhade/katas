@@ -2,7 +2,7 @@ package primitive
 
 // count set bits in possitive num
 //
-// time: O(n); n is number of digits in num
+// worst time O(n); n is number of bits in num
 func CountActiveBits(num uint) uint {
 	var count uint = 0
 	for num > 0 {
