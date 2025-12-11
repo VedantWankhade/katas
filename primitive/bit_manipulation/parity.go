@@ -33,7 +33,7 @@ Approach
 Complexity:
 
 	Worst Time: O(n); where n is number of ALL bits in num
-	Average Time: O(m); where m is number of SET bits in num
+	Average Time: O(m); where m is number of SET bits in num. m < n
 	Best Time: O(1)
 */
 func ParityDropLowestSetBit(num int) int {
