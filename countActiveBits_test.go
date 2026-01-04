@@ -1,14 +1,14 @@
-package bitmanipulation_test
+package katas_test
 
 import (
 	"testing"
 
-	bitmanipulation "github.com/vedantwankhade/katas/interviews/coding-problems/primitive/bit_manipulation"
+	katas "github.com/vedantwankhade/katas/interviews/coding-problems"
 	"github.com/vedantwankhade/katas/interviews/coding-problems/test"
 )
 
 func TestCountActiveBits(t *testing.T) {
-	test.Test(t, bitmanipulation.CountActiveBits, []test.TestCase[uint, uint]{
+	test.Test(t, katas.CountActiveBits, []test.TestCase[uint, uint]{
 		{Input: 0, Expected: 0},
 		{Input: 1, Expected: 1},
 		{Input: 2, Expected: 1},

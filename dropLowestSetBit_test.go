@@ -1,14 +1,14 @@
-package bitmanipulation_test
+package katas_test
 
 import (
 	"testing"
 
-	bitmanipulation "github.com/vedantwankhade/katas/interviews/coding-problems/primitive/bit_manipulation"
+	katas "github.com/vedantwankhade/katas/interviews/coding-problems"
 	"github.com/vedantwankhade/katas/interviews/coding-problems/test"
 )
 
 func TestDropLowestSetBit(t *testing.T) {
-	test.Test(t, bitmanipulation.DropLowestSetBit, []test.TestCase[int, int]{
+	test.Test(t, katas.DropLowestSetBit, []test.TestCase[int, int]{
 		{
 			Input:    0, // 0000
 			Expected: 0, // 0000

@@ -1,4 +1,4 @@
-package bitmanipulation
+package katas
 
 /*
 Question:

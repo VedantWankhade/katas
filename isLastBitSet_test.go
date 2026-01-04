@@ -1,14 +1,14 @@
-package bitmanipulation_test
+package katas_test
 
 import (
 	"testing"
 
-	bitmanipulation "github.com/vedantwankhade/katas/interviews/coding-problems/primitive/bit_manipulation"
+	katas "github.com/vedantwankhade/katas/interviews/coding-problems"
 	"github.com/vedantwankhade/katas/interviews/coding-problems/test"
 )
 
 func TestIsLastBitSet(t *testing.T) {
-	test.Test(t, bitmanipulation.IsLastBitSet, []test.TestCase[int, bool]{
+	test.Test(t, katas.IsLastBitSet, []test.TestCase[int, bool]{
 		{Input: 0, Expected: false},
 		{Input: 1, Expected: true},
 		{Input: 2, Expected: false},
