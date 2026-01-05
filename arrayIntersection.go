@@ -1,5 +1,7 @@
 package katas
 
+import "slices"
+
 /*
 Question:
 
@@ -82,4 +84,29 @@ func ArrayIntersection2(nums1, nums2 []int) []int {
 	}
 
 	return ans
+}
+
+// two pointers approach
+// O(logn + logn)
+func ArrayIntersectionTwoPointers(nums1, nums2 []int) []int {
+	// sort the arrays
+	slices.Sort(nums1)
+	slices.Sort(nums2)
+
+	i, j := 0, 0
+	res := make([]int, 0)
+
+	for i < len(nums1) && j < len(nums2) {
+		if nums1[i] == nums2[j] {
+			res = append(res, nums1[i])
+			i++
+			j++
+		} else if nums1[i] < nums2[j] {
+			i++
+		} else {
+			j++
+		}
+	}
+
+	return res
 }
