@@ -1,0 +1,85 @@
+package sequence
+
+import (
+	"bytes"
+	"fmt"
+	"iter"
+)
+
+const load_factor = 2
+
+type dynamicArray[T any] struct {
+	arr  []T
+	len  int
+	size int
+}
+
+// Returns a dynamic array with initial size of 8
+func NewArray[T any](initialSize int) *dynamicArray[T] {
+	return &dynamicArray[T]{
+		arr:  make([]T, initialSize),
+		len:  0,
+		size: initialSize,
+	}
+}
+
+func (da *dynamicArray[T]) Add(t T) {
+	if da.len == da.size {
+		da.resize()
+	}
+	da.arr[da.len] = t
+	da.len++
+}
+
+func (da *dynamicArray[T]) resize() {
+	newSize := load_factor * da.size
+	newArr := make([]T, newSize)
+	copy(newArr, da.arr)
+	da.size = newSize
+	da.arr = newArr
+}
+
+func (da *dynamicArray[T]) Len() int {
+	return da.len
+}
+
+func (da *dynamicArray[T]) Get(i int) (T, bool) {
+	if i >= da.Len() {
+		return *new(T), false
+	}
+	return da.arr[i], true
+}
+
+func (da *dynamicArray[T]) Size() int {
+	return da.size
+}
+
+func (da *dynamicArray[T]) Set(i int, t T) bool {
+	if i < da.Len() && i >= 0 {
+		da.arr[i] = t
+		return true
+	}
+	return false
+}
+
+func (da *dynamicArray[T]) Iter() iter.Seq2[int, T] {
+	return func(yeild func(int, T) bool) {
+		for i, t := range da.arr {
+			if !yeild(i, t) {
+				return
+			}
+		}
+	}
+}
+
+func (da *dynamicArray[T]) String() string {
+	var out bytes.Buffer
+	out.WriteString("[")
+	for i, t := range da.arr {
+		out.WriteString(fmt.Sprintf("%v", t))
+		if i < da.Len() {
+			out.WriteString(", ")
+		}
+	}
+	return out.String()
+}
