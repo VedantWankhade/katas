@@ -31,6 +31,21 @@ func (da *dynamicArray[T]) Add(t T) {
 	da.len++
 }
 
+func (da *dynamicArray[T]) AddAt(index int, t T) bool {
+	if index < 0 || index > da.Len() {
+		return false
+	}
+	if da.len == da.size {
+		da.resize()
+	}
+	for i := da.len - 1; i >= index; i-- {
+		da.arr[i+1] = da.arr[i]
+	}
+	da.arr[index] = t
+	da.len++
+	return true
+}
+
 func (da *dynamicArray[T]) resize() {
 	newSize := load_factor * da.size
 	newArr := make([]T, newSize)
@@ -75,11 +90,13 @@ func (da *dynamicArray[T]) Iter() iter.Seq2[int, T] {
 func (da *dynamicArray[T]) String() string {
 	var out bytes.Buffer
 	out.WriteString("[")
-	for i, t := range da.arr {
+	for i, t := range da.arr[0:da.len] {
 		out.WriteString(fmt.Sprintf("%v", t))
 		if i < da.Len() {
 			out.WriteString(", ")
 		}
 	}
+	out.WriteString("]")
+
 	return out.String()
 }
