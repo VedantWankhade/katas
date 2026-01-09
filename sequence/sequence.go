@@ -11,6 +11,8 @@ type Sequence[T any] interface {
 	Len() int
 	Get(index int) (T, bool)
 	Set(index int, t T) bool
-	Iter() iter.Seq[T]
+	Iter() iter.Seq2[int, T]
 	String() string
+	Remove(index int) (T, bool)
+	// Reverse(func(T, T) int)
 }

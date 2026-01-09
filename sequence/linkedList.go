@@ -26,6 +26,34 @@ func NewLinkedList[T any]() *linkedList[T] {
 	}
 }
 
+func (ll *linkedList[T]) Remove(index int) (T, bool) {
+	ret, ok := ll.Get(index)
+	if !ok {
+		return *new(T), false
+	}
+	if index == 0 {
+		if ll.head.next != nil {
+			ll.head.next.prev = nil
+		}
+		ll.head = ll.head.next
+		ll.length--
+		return ret, true
+	}
+	if index == ll.Len()-1 {
+		ll.tail.prev.next = nil
+		ll.tail = ll.tail.prev
+		ll.length--
+		return ret, true
+	}
+	n := ll.head
+	for i := 0; i < index; i, n = i+1, n.next {
+
+	}
+	n.prev.next = n.next
+	ll.length--
+	return ret, true
+}
+
 func (ll *linkedList[T]) Len() int {
 	return ll.length
 }
@@ -80,7 +108,7 @@ func (ll *linkedList[T]) AddAt(index int, t T) bool {
 }
 
 func (ll *linkedList[T]) Get(index int) (T, bool) {
-	if index >= ll.Len() {
+	if index >= ll.Len() || index < 0 {
 		return *new(T), false
 	}
 

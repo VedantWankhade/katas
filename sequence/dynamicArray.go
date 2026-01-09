@@ -15,7 +15,7 @@ type dynamicArray[T any] struct {
 }
 
 // Returns a dynamic array with initial size of 8
-func NewArray[T any](initialSize int) *dynamicArray[T] {
+func NewDynamicArray[T any](initialSize int) *dynamicArray[T] {
 	return &dynamicArray[T]{
 		arr:  make([]T, initialSize),
 		len:  0,
@@ -29,6 +29,24 @@ func (da *dynamicArray[T]) Add(t T) {
 	}
 	da.arr[da.len] = t
 	da.len++
+}
+
+func (da *dynamicArray[T]) Remove(index int) (T, bool) {
+	ret, ok := da.Get(index)
+	if !ok {
+		return *new(T), false
+	}
+	if index == da.Len()-1 {
+		da.arr[index] = *new(T)
+		da.len--
+		return ret, true
+	}
+	for i := index + 1; i < da.Len(); i++ {
+		da.arr[i-1] = da.arr[i]
+	}
+	da.arr[da.Len()-1] = *new(T)
+	da.len--
+	return ret, true
 }
 
 func (da *dynamicArray[T]) AddAt(index int, t T) bool {
@@ -59,7 +77,7 @@ func (da *dynamicArray[T]) Len() int {
 }
 
 func (da *dynamicArray[T]) Get(i int) (T, bool) {
-	if i >= da.Len() {
+	if i >= da.Len() || i < 0 {
 		return *new(T), false
 	}
 	return da.arr[i], true
@@ -79,7 +97,7 @@ func (da *dynamicArray[T]) Set(i int, t T) bool {
 
 func (da *dynamicArray[T]) Iter() iter.Seq2[int, T] {
 	return func(yeild func(int, T) bool) {
-		for i, t := range da.arr {
+		for i, t := range da.arr[0:da.Len()] {
 			if !yeild(i, t) {
 				return
 			}
