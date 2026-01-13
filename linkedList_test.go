@@ -1,13 +1,13 @@
-package sequence_test
+package dsa_test
 
 import (
 	"testing"
 
-	"github.com/vedantwankhade/katas/dsa/sequence"
+	"github.com/vedantwankhade/katas/dsa"
 )
 
-func newIntLinkedList() sequence.Sequence[int] {
-	return sequence.NewLinkedList[int]()
+func newIntLinkedList() dsa.Sequence[int] {
+	return dsa.NewLinkedList[int]()
 }
 
 // ---------- TESTS ----------

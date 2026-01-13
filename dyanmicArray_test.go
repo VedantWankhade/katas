@@ -1,14 +1,14 @@
-package sequence_test
+package dsa_test
 
 import (
 	"strings"
 	"testing"
 
-	"github.com/vedantwankhade/katas/dsa/sequence"
+	"github.com/vedantwankhade/katas/dsa"
 )
 
-func newIntSequence() sequence.Sequence[int] {
-	return sequence.NewDynamicArray[int](8)
+func newIntSequence() dsa.Sequence[int] {
+	return dsa.NewDynamicArray[int](8)
 }
 
 func TestAddAndLen(t *testing.T) {

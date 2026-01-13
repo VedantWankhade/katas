@@ -1,14 +1,12 @@
 package dsa
 
-import "github.com/vedantwankhade/katas/dsa/sequence"
-
 type linkedStack[T any] struct {
-	ll sequence.Sequence[T]
+	ll Sequence[T]
 }
 
 func NewStack[T any]() Stack[T] {
 	return &linkedStack[T]{
-		ll: sequence.NewLinkedList[T](),
+		ll: NewLinkedList[T](),
 	}
 }
 

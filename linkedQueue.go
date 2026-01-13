@@ -1,20 +1,18 @@
 package dsa
 
-import "github.com/vedantwankhade/katas/dsa/sequence"
-
 type deque[T any] struct {
-	ll sequence.Sequence[T]
+	ll Sequence[T]
 }
 
 func NewDeque[T any]() Deque[T] {
 	return &deque[T]{
-		ll: sequence.NewLinkedList[T](),
+		ll: NewLinkedList[T](),
 	}
 }
 
 func NewQueue[T any]() Queue[T] {
 	return &deque[T]{
-		ll: sequence.NewLinkedList[T](),
+		ll: NewLinkedList[T](),
 	}
 }
 

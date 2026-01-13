@@ -1,14 +1,14 @@
-package sequence_test
+package dsa_test
 
 import (
 	"math/rand"
 	"testing"
 	"time"
 
-	"github.com/vedantwankhade/katas/dsa/sequence"
+	"github.com/vedantwankhade/katas/dsa"
 )
 
-func benchmarkAdd(b *testing.B, newSeq func() sequence.Sequence[int]) {
+func benchmarkAdd(b *testing.B, newSeq func() dsa.Sequence[int]) {
 	seq := newSeq()
 	b.ResetTimer()
 
@@ -17,7 +17,7 @@ func benchmarkAdd(b *testing.B, newSeq func() sequence.Sequence[int]) {
 	}
 }
 
-func benchmarkAddAtHead(b *testing.B, newSeq func() sequence.Sequence[int]) {
+func benchmarkAddAtHead(b *testing.B, newSeq func() dsa.Sequence[int]) {
 	seq := newSeq()
 	b.ResetTimer()
 
@@ -26,7 +26,7 @@ func benchmarkAddAtHead(b *testing.B, newSeq func() sequence.Sequence[int]) {
 	}
 }
 
-func benchmarkAddAtMiddle(b *testing.B, newSeq func() sequence.Sequence[int]) {
+func benchmarkAddAtMiddle(b *testing.B, newSeq func() dsa.Sequence[int]) {
 	seq := newSeq()
 	for i := 0; i < 1_000; i++ {
 		seq.Add(i)
@@ -38,7 +38,7 @@ func benchmarkAddAtMiddle(b *testing.B, newSeq func() sequence.Sequence[int]) {
 	}
 }
 
-func benchmarkGetRandom(b *testing.B, newSeq func() sequence.Sequence[int]) {
+func benchmarkGetRandom(b *testing.B, newSeq func() dsa.Sequence[int]) {
 	seq := newSeq()
 	const size = 10_000
 	for i := 0; i < size; i++ {
@@ -53,7 +53,7 @@ func benchmarkGetRandom(b *testing.B, newSeq func() sequence.Sequence[int]) {
 	}
 }
 
-func benchmarkIter(b *testing.B, newSeq func() sequence.Sequence[int]) {
+func benchmarkIter(b *testing.B, newSeq func() dsa.Sequence[int]) {
 	seq := newSeq()
 	const size = 10_000
 	for i := 0; i < size; i++ {

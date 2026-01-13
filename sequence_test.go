@@ -1,14 +1,14 @@
-package sequence_test
+package dsa_test
 
 import (
 	"testing"
 
-	"github.com/vedantwankhade/katas/dsa/sequence"
+	"github.com/vedantwankhade/katas/dsa"
 )
 
 // ---------- HELPERS ----------
 
-func runRemoveTests(t *testing.T, name string, newSeq func() sequence.Sequence[int]) {
+func runRemoveTests(t *testing.T, name string, newSeq func() dsa.Sequence[int]) {
 	t.Run(name, func(t *testing.T) {
 
 		t.Run("RemoveFromEmpty", func(t *testing.T) {
@@ -94,7 +94,7 @@ func runRemoveTests(t *testing.T, name string, newSeq func() sequence.Sequence[i
 
 // ---------- ASSERT HELPERS ----------
 
-func assertSequence(t *testing.T, seq sequence.Sequence[int], expected []int) {
+func assertSequence(t *testing.T, seq dsa.Sequence[int], expected []int) {
 	t.Helper()
 
 	if seq.Len() != len(expected) {

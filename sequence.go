@@ -1,7 +1,7 @@
 /*
 Sequence is a collection of items that has some order.
 */
-package sequence
+package dsa
 
 import "iter"
 

@@ -1,4 +1,4 @@
-package sequence
+package dsa
 
 import (
 	"bytes"
@@ -24,6 +24,33 @@ func NewLinkedList[T any]() *linkedList[T] {
 		tail:   nil,
 		length: 0,
 	}
+}
+
+func (ll *linkedList[T]) Search(t T, eq func(t1, t2 T) int) (T, bool) {
+	if ll.Len() == 0 {
+		return *new(T), false
+	}
+
+	for n := ll.head; n != nil; n = n.next {
+		if eq(t, n.data) == 0 {
+			return n.data, true
+		}
+	}
+	return *new(T), false
+}
+
+func (ll *linkedList[T]) RemoveItem(t T, eq func(T, T) int) bool {
+	if ll.Len() == 0 {
+		return false
+	}
+	for n := ll.head; n != nil; n = n.next {
+		if eq(t, n.data) == 0 {
+			n.prev.next = n.next
+			ll.length--
+			return true
+		}
+	}
+	return false
 }
 
 func (ll *linkedList[T]) Remove(index int) (T, bool) {
