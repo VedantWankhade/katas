@@ -1,6 +1,7 @@
 package arraystring_test
 
 import (
+	"fmt"
 	"slices"
 	"testing"
 
@@ -37,4 +38,10 @@ func TestRemoveElement(t *testing.T) {
 			t.Errorf("\nNums: %v\tVal: %v\nActual K: %v\tExpected K: %v\nActual Nums: %v\tExpected Nums: %v", test.nums, test.val, actualK, test.expectedK, actualNums, test.expectedNums)
 		}
 	}
+}
+
+func TestRemoveElementKeepSortedOrder(t *testing.T) {
+	nums := []int{2, 2, 3, 4}
+	arraystring.RemoveElementKeepSortedOrder(nums, 2)
+	fmt.Println(nums)
 }

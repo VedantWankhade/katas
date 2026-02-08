@@ -21,3 +21,23 @@ func RemoveElement(nums []int, val int) int {
 
 	return len(nums) - k
 }
+
+func RemoveElementKeepSortedOrder(nums []int, val int) int {
+	if len(nums) == 0 {
+		return 0
+	}
+
+	left, right, k := 0, 1, 0
+
+	for left < len(nums) && right < len(nums) {
+		if nums[left] == val {
+			k++
+			nums[right], nums[left] = nums[left], nums[right]
+			right++
+		} else {
+			left++
+		}
+	}
+
+	return len(nums) - k
+}
