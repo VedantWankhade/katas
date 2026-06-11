@@ -90,3 +90,24 @@ func LinkedListString(list *linkedlist.ListNode) string {
 
 	return out.String()
 }
+
+func LinkedListFromArray(arr []int) *linkedlist.ListNode {
+	if len(arr) == 0 {
+		return nil
+	}
+
+	out := &linkedlist.ListNode{
+		Val:  arr[0],
+		Next: nil,
+	}
+	res := out
+	for _, n := range arr[1:] {
+		out.Next = &linkedlist.ListNode{
+			Val:  n,
+			Next: nil,
+		}
+		out = out.Next
+	}
+
+	return res
+}
