@@ -1,24 +1,31 @@
 {
-  description = "Python development environment";
+  description = "Python Jupyter development environment";
 
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-  };
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-  outputs = { self, nixpkgs }:
+  outputs = { nixpkgs, ... }:
     let
-      system = "x86_64-linux"; 
+      system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
+
+      python = pkgs.python313.withPackages (ps: with ps; [
+        jupyter
+        jupyterlab
+        ipykernel
+
+        numpy
+        pandas
+        matplotlib
+      ]);
+    in {
       devShells.${system}.default = pkgs.mkShell {
-        packages = with pkgs; [
-            python313
-            python313Packages.pytest
+        packages = [
+          python
         ];
 
         shellHook = ''
           echo "🐍 Python development environment"
+          echo "Run: jupyter notebook"
           echo "Happy Hacking 😎"
         '';
       };
