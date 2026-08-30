@@ -14,6 +14,7 @@
         ipykernel
 
         numpy
+        pympler
         pandas
         matplotlib
       ]);
